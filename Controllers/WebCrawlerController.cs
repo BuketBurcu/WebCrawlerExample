@@ -16,14 +16,14 @@ namespace WebCrawlerExample.Controllers
         }
 
         [HttpGet]
-        public List<string> Get(string address)
+        public List<string> Get(string address,string htmlNode)
         {
             var linkList = new List<string>();
 
             HtmlWeb site = new HtmlWeb();
             HtmlDocument htmlDocument = site.Load(address);
-            
-            foreach (HtmlNode link in htmlDocument.DocumentNode.SelectNodes("//a[@class='slick-item-jobs-box']"))
+
+            foreach (HtmlNode link in htmlDocument.DocumentNode.SelectNodes(htmlNode))
             {
                 string hrefValue = link.GetAttributeValue("href", string.Empty);
                 linkList.Add(hrefValue);
