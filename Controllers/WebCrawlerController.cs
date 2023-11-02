@@ -2,6 +2,9 @@
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using HtmlAgilityPack;
+using WebCrawlerExample.DataAccess;
+using WebCrawlerExample.Models;
+using System.Net;
 
 namespace WebCrawlerExample.Controllers
 {
@@ -16,7 +19,7 @@ namespace WebCrawlerExample.Controllers
         }
 
         [HttpGet]
-        public List<string> Get(string address,string htmlNode)
+        public List<string> Get(string address, string htmlNode)
         {
             var linkList = new List<string>();
 
@@ -25,8 +28,16 @@ namespace WebCrawlerExample.Controllers
 
             foreach (HtmlNode link in htmlDocument.DocumentNode.SelectNodes(htmlNode))
             {
-                string hrefValue = link.GetAttributeValue("href", string.Empty);
-                linkList.Add(hrefValue);
+                var jobDataModel = new JobDataModel
+                {
+                    CompanyName = link.SelectNodes("div/div[2]/div/span/p")[0].InnerText.Trim(),
+                    JobDetail = link.SelectNodes("div/div[2]/p")[0].InnerText.Trim(),
+                    Link = link.GetAttributeValue("href", string.Empty)
+                };
+                //linkList.Add(hrefValue);
+
+                using (MongoRepository<JobDataModel> repository = new MongoRepository<JobDataModel>())
+                    repository.Add(jobDataModel);
             }
 
             return linkList;
