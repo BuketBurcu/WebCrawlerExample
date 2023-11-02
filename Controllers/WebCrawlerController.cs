@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using HtmlAgilityPack;
 using WebCrawlerExample.DataAccess;
 using WebCrawlerExample.Models;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Threading;
+
 
 namespace WebCrawlerExample.Controllers
 {
@@ -28,7 +25,7 @@ namespace WebCrawlerExample.Controllers
 
             HtmlWeb site = new HtmlWeb();
             HtmlDocument htmlDocument = site.Load(address);
-            //Stopwatch sw = Stopwatch.StartNew();
+
 
             foreach (HtmlNode link in htmlDocument.DocumentNode.SelectNodes(htmlNode))
             {
@@ -41,12 +38,6 @@ namespace WebCrawlerExample.Controllers
                 linkList.Add(jobDataModel);
                 using (MongoRepository<JobDataModel> repository = new MongoRepository<JobDataModel>())
                     repository.Add(jobDataModel);
-
-                string jsonString = JsonSerializer.Serialize(linkList);
-                //Stopwatch stopWatch = new Stopwatch();
-                //stopWatch.Start();
-                //Thread.Sleep(10000);
-                //stopWatch.Stop();
             }
             return linkList;
         }
