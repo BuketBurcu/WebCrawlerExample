@@ -28,3 +28,16 @@ C:\Users\BUKET\source\repos\WebCrawlerExample\obj\Debug\net5.0\WebCrawlerExample
 C:\Users\BUKET\source\repos\WebCrawlerExample\obj\Debug\net5.0\ref\WebCrawlerExample.dll
 C:\Users\BUKET\source\repos\WebCrawlerExample\obj\Debug\net5.0\WebCrawlerExample.pdb
 C:\Users\BUKET\source\repos\WebCrawlerExample\obj\Debug\net5.0\WebCrawlerExample.genruntimeconfig.cache
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\AWSSDK.Core.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\AWSSDK.SecurityToken.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\DnsClient.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\MongoDB.Bson.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\MongoDB.Driver.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\SharpCompress.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\Snappier.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\ZstdSharp.dll
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\BUKET\source\repos\WebCrawlerExample\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
