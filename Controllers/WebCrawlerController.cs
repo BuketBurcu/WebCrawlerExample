@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using HtmlAgilityPack;
 using WebCrawlerExample.DataAccess;
 using WebCrawlerExample.Models;
-using System.Net;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Text.Json;
+using System.Threading;
 
 namespace WebCrawlerExample.Controllers
 {
@@ -19,12 +22,13 @@ namespace WebCrawlerExample.Controllers
         }
 
         [HttpGet]
-        public List<string> Get(string address, string htmlNode)
+        public List<JobDataModel> Get(string address, string htmlNode)
         {
-            var linkList = new List<string>();
+            var linkList = new List<JobDataModel>();
 
             HtmlWeb site = new HtmlWeb();
             HtmlDocument htmlDocument = site.Load(address);
+            //Stopwatch sw = Stopwatch.StartNew();
 
             foreach (HtmlNode link in htmlDocument.DocumentNode.SelectNodes(htmlNode))
             {
@@ -34,12 +38,16 @@ namespace WebCrawlerExample.Controllers
                     JobDetail = link.SelectNodes("div/div[2]/p")[0].InnerText.Trim(),
                     Link = link.GetAttributeValue("href", string.Empty)
                 };
-                //linkList.Add(hrefValue);
-
+                linkList.Add(jobDataModel);
                 using (MongoRepository<JobDataModel> repository = new MongoRepository<JobDataModel>())
                     repository.Add(jobDataModel);
-            }
 
+                string jsonString = JsonSerializer.Serialize(linkList);
+                //Stopwatch stopWatch = new Stopwatch();
+                //stopWatch.Start();
+                //Thread.Sleep(10000);
+                //stopWatch.Stop();
+            }
             return linkList;
         }
     }
